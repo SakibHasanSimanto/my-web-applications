@@ -62,14 +62,13 @@ if st.button('Predict'):
         input_list = [gender, age, smoking, ylf, anx, peer_press, chron_dis, fatig, allerg, wheez, alchl, cough, breath, sd, chest] 
         prediction = model.predict([input_list]) 
         if prediction[0] == 1: 
-            outcome = 'আছে' 
-        else: 
-            outcome = 'নেই'
+            outcome = 1 
+            st.success('ফুসফুসে ক্যান্সারের সম্ভাবনাঃ আছে') 
+        elif prediction[0] == 0: 
+            outcome = 0
+            st.success('ফুসফুসে ক্যান্সারের সম্ভাবনাঃ নেই') 
+            st.balloons() 
 
-        st.success(f'ফুসফুসে ক্যান্সারের সম্ভাবনা: {outcome}') 
-
-        if outcome == 'নেই':
-            st.balloons()  # Optional for 'No' outcome as you had before, but consider the emotional tone
 
     except Exception as e: 
         st.error(f"Error: {e}")  
@@ -77,7 +76,7 @@ if st.button('Predict'):
 # Add Comments Section with columns
 if st.button('মন্তব্য'):
     try:
-        if outcome == 'আছে':
+        if outcome == 1:
             st.write("### পূর্বাভাস: ফুসফুসের ক্যান্সার শনাক্ত হতে পারে")
             st.write("মডেলের পারফরম্যান্সের উপর ভিত্তি করে, আপনার যা বিবেচনা করা উচিত:")
             st.write(" - **নির্ভুলতা (Precision, 0.93)**: যখন মডেল ফুসফুসের ক্যান্সার ভবিষ্যদ্বাণী করে, তখন এটি ৯৩% সঠিক। এটি ইঙ্গিত করে যে আপনার ফুসফুসের ক্যান্সার হওয়ার সম্ভাবনা বেশি, তবে এটি নিশ্চিত করতে এবং চিকিৎসার বিকল্পগুলি অন্বেষণ করতে একজন স্বাস্থ্য বিশেষজ্ঞের সাথে পরামর্শ করা গুরুত্বপূর্ণ।")
@@ -86,7 +85,7 @@ if st.button('মন্তব্য'):
             st.write("আরো নিশ্চিত ডায়াগনোসিসের জন্য অবশ্যই একজন চিকিৎসা বিশেষজ্ঞের সাথে যোগাযোগ করুন এবং আপনার স্বাস্থ্য সুরক্ষার জন্য সঠিক পদক্ষেপগুলি আলোচনা করুন।")
 
 
-        elif outcome == 'নেই':
+        elif outcome == 0:
             st.write("### পূর্বাভাস: ফুসফুসের ক্যান্সার শনাক্ত হয়নি")
             st.write("যাদের ক্ষেত্রে ফুসফুসের ক্যান্সার শনাক্ত হয়নি বলে পূর্বাভাস দেওয়া হয়েছে, মডেলটি যা প্রস্তাব করে:")
             st.write(" - **নির্ভুলতা (Precision, 0.90)**: মডেলটি ফুসফুসের ক্যান্সার নেই এমন পূর্বাভাস দেওয়ার সময় ৯০% সঠিক। আপনি রোগমুক্ত থাকার বিষয়ে বেশ আত্মবিশ্বাসী হতে পারেন। তবে, আপনার স্বাস্থ্য পর্যবেক্ষণ করা এবং নিয়মিত চিকিৎসা পরীক্ষা করানো চালিয়ে যান।")
@@ -97,7 +96,6 @@ if st.button('মন্তব্য'):
         
     except Exception as e:
         st.error(f"Error: {e}")
-
 # Add Potential Dangers Section with a responsive layout
 if st.button('সম্ভাব্য ঝুঁকি'):
     try:
