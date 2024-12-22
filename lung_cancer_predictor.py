@@ -14,7 +14,7 @@ st.set_page_config(
 
 st.title('ফুসফুস ক্যান্সার নির্ণায়ক ১.০')
 st.write('অনুগ্রহ করে নিম্নোক্ত নির্দেশাবলী অনুসরণ করে আপনার ডেটা ইনপুট দিন')  
-
+outcome = 0
 if st.button('নির্দেশাবলী'): 
     
 
@@ -55,7 +55,7 @@ with col2:
     sd = st.text_input('খাবার গিলতে কষ্ট হয়?')
     chest = st.text_input('বুকে ব্যথা আছে?')
 
-outcome = None 
+
 
 if st.button('Predict'): 
     try: 
