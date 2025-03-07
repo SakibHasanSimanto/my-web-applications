@@ -31,29 +31,28 @@ except:
 st.title('Threat Predictor 1.0')
 st.write('Enter your input in the following fields')
 
-age = st.text_input('Age:')
-ed_lvl = st.text_input('Education lvl:')
-occu_type = st.text_input('Occupation type:')
-rel_stat = st.text_input('Relationship Stats:')
-city = st.text_input('City Type:')
-empathy = st.text_input('Empathy score:')
-anger = st.text_input('Anger control level:')
-boundary = st.text_input('Respect for boundary:')
-conf_res = st.text_input('Conflict resolution:')
-online_cmnt = st.text_input('Online comment sentiment:')
-past = st.text_input('Past complains:')
-peer_rating = st.text_input('Friend and peer safety rating:')
-soc_good = st.text_input('Participation in social good:')
-alcohol = st.text_input('Alcohol consumption frequency:')
-hist_aggressive = st.text_input('History of aggressive behavior:')
+age = st.number_input('Age:')
+ed_lvl = st.number_input('Education lvl:')
+occu_type = st.number_input('Occupation type:')
+rel_stat = st.number_input('Relationship Stats:')
+city = st.number_input('City Type:')
+empathy = st.number_input('Empathy score:')
+anger = st.number_input('Anger control level:')
+boundary = st.number_input('Respect for boundary:')
+conf_res = st.number_input('Conflict resolution:')
+online_cmnt = st.number_input('Online comment sentiment:')
+past = st.number_input('Past complains:')
+peer_rating = st.number_input('Friend and peer safety rating:')
+soc_good = st.number_input('Participation in social good:')
+alcohol = st.number_input('Alcohol consumption frequency:')
+hist_aggressive = st.number_input('History of aggressive behavior:')
 
 # Convert input to float (handling errors)
 
-input_list = np.array([age, ed_lvl, occu_type, rel_stat,
-                           city, empathy, anger, boundary,
-                           conf_res, online_cmnt, past, peer_rating,
-                           soc_good, alcohol, hist_aggressive]).reshape(1, -1)
-
+input_list = np.array([float(age), float(ed_lvl), float(occu_type), float(rel_stat), 
+                           float(city), float(empathy), float(anger), float(boundary), 
+                           float(conf_res), float(online_cmnt), float(past), float(peer_rating), 
+                           float(soc_good), float(alcohol), float(hist_aggressive)]).reshape(1, -1)
 
 if st.button('Predict'):
     try:
