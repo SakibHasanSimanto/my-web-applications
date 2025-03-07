@@ -1,3 +1,4 @@
+lightgbm
 streamlit
 shap
 matplotlib
