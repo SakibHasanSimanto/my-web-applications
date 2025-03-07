@@ -13,7 +13,7 @@ import pickle
 import shap
 import matplotlib.pyplot as plt
 import numpy as np
-import lightgbm as lgb
+
 # Load the model
 with open('model.pkl', 'rb') as f:
     model = pickle.load(f)
