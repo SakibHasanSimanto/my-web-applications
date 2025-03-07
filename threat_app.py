@@ -49,10 +49,10 @@ hist_aggressive = st.text_input('History of aggressive behavior:')
 
 # Convert input to float (handling errors)
 
-input_list = np.array([float(age), float(ed_lvl), float(occu_type), float(rel_stat),
-                           float(city), float(empathy), float(anger), float(boundary),
-                           float(conf_res), float(online_cmnt), float(past), float(peer_rating),
-                           float(soc_good), float(alcohol), float(hist_aggressive)]).reshape(1, -1)
+input_list = np.array([age, ed_lvl, occu_type, rel_stat,
+                           city, empathy, anger, boundary,
+                           conf_res, online_cmnt, past, peer_rating,
+                           soc_good, alcohol, hist_aggressive]).reshape(1, -1)
 
 
 if st.button('Predict'):
