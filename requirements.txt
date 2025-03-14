@@ -5,3 +5,4 @@ matplotlib
 shap
 numpy 
 catboost
+cython==0.29.32
